@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './realTimeAuth.db3'
+      filename: './database/realTimeAuth.db3'
     },
     useNullAsDefault: true,
     migrations: {
