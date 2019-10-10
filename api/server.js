@@ -8,14 +8,14 @@ server.use(express.json())
 server.use(helmet())
 server.use(cors())
 
-const authRouter = require('../routes/auth_routes')
+const userRouter = require('../routes/users-route')
 
-server.get('/', (res, req) => {
+server.get('/', (req, res) => {
     res.json({
-        message: 'Welcome to the Real Time Auth Server'
+        message: 'Welcome to the Real Time Validation Server'
     })
 })
 
-server.use('/', authRouter)
+server.use('/auth', userRouter)
 
 module.exports = server
