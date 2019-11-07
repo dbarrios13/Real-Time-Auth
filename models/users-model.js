@@ -2,9 +2,9 @@ const db = require('../database/dbConfig')
 
 module.exports = {
     add,
-    findByUsername,
-    findByEmail,
-    findById
+    findById,
+    getUsernames,
+    getEmails
 }
 
 function add (user) {
@@ -22,14 +22,12 @@ function findById (id) {
         .first()
 }
 
-function findByUsername (item) {
+function getUsernames () {
     return db('user')
-        .where({username: item})
-        // .first()
+        .select("username")
 }
 
-function findByEmail (item) {
+function getEmails () {
     return db('user')
-        .where({email: item})
-        // .first()
+        .select("email")
 }

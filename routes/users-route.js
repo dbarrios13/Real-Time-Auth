@@ -4,27 +4,16 @@ const jwt = require('jsonwebtoken')
 const secret = require('../auth/secrets')
 const bcrypt = require('bcryptjs')
 
-route.get('/username/:username', async (req, res) => {
+route.get('/usernames', async (req, res) => {
     try {
-        let {username} = req.params
-        const checkUsername = await userDB.findByUsername(username)
-        if(checkUsername.length > 0) { 
-            res.status(200).json({
-                message: 'Username already exists',
-                username: true
-            })
-        } else {
-            res.status(200).json({
-                message: 'Valid username',
-                username: false
-            })
-        }
+        const usernames = await userDB.getUsernames()
+        res.status(200).json({usernames})
     } catch ({ message }) {
         res.status(500).json({ message })
     }
 })
 
-route.get('/email/:email', async (req, res) => {
+route.get('/emails', async (req, res) => {
     try {
         let {email} = req.params
         const checkEmail = await userDB.findByEmail(email)
